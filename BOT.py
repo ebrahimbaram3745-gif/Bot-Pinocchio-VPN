@@ -34,7 +34,7 @@ markup = InlineKeyboardMarkup(
 
         [
             InlineKeyboardButton(
-                text="🟦 آبی ممد",
+                text=" آبی ممد",
                 callback_data="BLUE_BTN",
                 style=ButtonStyle.PRIMARY
             )
@@ -42,7 +42,7 @@ markup = InlineKeyboardMarkup(
 
         [
             InlineKeyboardButton(
-                text="🟥 قرمز ممد",
+                text=" قرمز ممد",
                 callback_data="RED",
                 style=ButtonStyle.DANGER
             )
