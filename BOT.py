@@ -28,32 +28,32 @@ emojis = {
 
 
 @dp.message()
-async def start(message: Message): ...
-markup = InlineKeyboardMarkup(
-    inline_keyboard=[
+async def start(message: Message):
 
-        [
-            InlineKeyboardButton(
-                text=" آبی ممد",
-                callback_data="BLUE_BTN",
-                style=ButtonStyle.PRIMARY
-            )
-        ],
+    markup = InlineKeyboardMarkup(
+        inline_keyboard=[
 
-        [
-            InlineKeyboardButton(
-                text=" قرمز ممد",
-                callback_data="RED",
-                style=ButtonStyle.DANGER
-            )
-        ],
+            [
+                InlineKeyboardButton(
+                    text="آبی ممد",
+                    callback_data="BLUE_BTN"
+                )
+            ],
 
-    ]
-)
-await message.answer(
-    text="Sample Text",
-    reply_markup=markup
-)
+            [
+                InlineKeyboardButton(
+                    text="قرمز ممد",
+                    callback_data="RED"
+                )
+            ]
+
+        ]
+    )
+
+    await message.answer(
+        text="Sample Text",
+        reply_markup=markup
+    )
 
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
