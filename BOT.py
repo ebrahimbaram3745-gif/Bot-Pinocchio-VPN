@@ -6,6 +6,7 @@ from telegram import (
     Update,
     InlineKeyboardButton,
     InlineKeyboardMarkup
+    ButtonStyle
 )
 
 from telegram.ext import (
@@ -16,49 +17,23 @@ from telegram.ext import (
 
 TOKEN = os.getenv("TOKEN")
 
-# ---------------- START ----------------
+dp = Dispatcher()
 
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
-    keyboard = [
+emojis = {
+    "hello": ("5440431182602842059", "👋"),
+    "start-eye": ("5253800186278325174", "🤩"),
+    "fire": ("5463154755054349837", "🔥"),
+}
 
-        [
-            InlineKeyboardButton(
-                "🟢 یک گیگ | 1.5 تون",
-                callback_data="1g"
-            )
-        ],
 
-        [
-            InlineKeyboardButton(
-                "🔵 دو گیگ | 3 تون",
-                callback_data="2g"
-            )
-        ],
+@dp.message()
+async def start(message: Message): ...
 
-        [
-            InlineKeyboardButton(
-                "🟣 سه گیگ | 4.5 تون",
-                callback_data="3g"
-            )
-        ],
 
-        [
-            InlineKeyboardButton(
-                "🔴 نامحدود | 5 تون",
-                callback_data="vip"
-            )
-        ]
-
-    ]
-
-    reply_markup = InlineKeyboardMarkup(keyboard)
-
-    await update.message.reply_text(
-        "💎 ابتدا یکی از پلن ها را انتخاب کنید",
-        reply_markup=reply_markup
-    )
-
+async def main() -> None:
+    bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
+    await dp.start_polling(bot)
 # ---------------- BOT ----------------
 
 app = Application.builder().token(TOKEN).build()
@@ -83,3 +58,6 @@ Thread(target=run).start()
 print("Bot Started...")
 
 app.run_polling()
+
+if __name__ == "__main__":
+    asyncio.run(main())
