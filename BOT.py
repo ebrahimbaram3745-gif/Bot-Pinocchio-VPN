@@ -50,6 +50,10 @@ markup = InlineKeyboardMarkup(
 
     ]
 )
+await message.answer(
+    text="Sample Text",
+    reply_markup=markup
+)
 
 async def main() -> None:
     bot = Bot(token=TOKEN, default=DefaultBotProperties(parse_mode="HTML"))
