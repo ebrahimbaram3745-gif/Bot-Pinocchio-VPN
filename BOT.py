@@ -5,7 +5,7 @@ from flask import Flask
 from telegram import (
     Update,
     InlineKeyboardButton,
-    InlineKeyboardMarkup
+    InlineKeyboardMarkup,
     ButtonStyle
 )
 
